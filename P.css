@@ -1,0 +1,110 @@
+body{
+    background-image: url('ariel-j-hog-lib-final-image.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#form{
+   display: flex;   
+   justify-content: center;
+   margin-left: 5%;
+   margin-top: 0; 
+}
+.form-control{
+    padding: 50px;
+}
+
+.form-control input{
+    margin-bottom: 30px;
+    outline: none;
+}
+#form p{
+    margin: 0 0 0 20px;
+}
+#title{
+    width: 300px;
+    height: 30px;
+    opacity: 0.6;
+    border-radius: 10px;
+    border: solid transparent;
+    border-width: 2px;
+}
+#autor{
+    width: 300px;
+    height: 30px;
+    opacity: 0.6;
+    border-radius: 10px;
+    border: solid transparent;
+    border-width: 2px;
+}
+#price{
+    width: 300px;
+    height: 30px;
+    opacity: 0.6;
+    border-radius: 10px;
+    border: solid transparent;
+    border-width: 2px;
+}
+#date{
+    width: 300px;
+    height: 30px;
+    opacity: 0.6;
+    border-radius: 10px;
+    border: solid transparent;
+    border-width: 2px;
+}
+h1{
+    font-family: 'Harry Potter', sans-serif;
+    color: rgb(221, 139, 15);
+    font-size: 80px;
+    margin-left: 30%;
+}
+#lang{
+    width: 305px;
+    height: 30px;
+    margin-bottom: 30px;
+    opacity: 0.6;
+    border-radius: 10px;    
+    border: solid transparent;
+    border-width: 2px;
+}
+#type-book label{
+    color: white;
+    margin-left: 15px;
+
+}
+table{
+    color: white;
+    border-color: white;
+    border: solid 1;
+    height: 30px;
+    margin-left: 25%;
+    padding-bottom: 50px;
+    height: 20px;
+}
+#submit{
+    margin: 20px 0 30px 0;
+    width: 100px;
+    height: 30px;
+    background-color: rgb(255, 254, 254);
+    color: black;
+    font-size: 15px;
+    border: solid 0;
+    border-radius: 9px;
+    opacity: 0.6;
+    margin-left: 28%;
+}
+#submit:hover{
+    background-color: rgb(0, 0, 0);
+    color: white;
+    transition: 0.7s;
+}
+.book{
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+td{
+    border: 1.8px solid white;
+}
+
+
+
