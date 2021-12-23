@@ -3,14 +3,38 @@ var form = document.getElementsByTagName("form")[0];
 var select = document.getElementById("lang");
 var type = document.getElementsByClassName("book")
 var para = document.getElementById("para");
-var table = document.getElementById("table")
-var email = document.getElementById("email")
+var table = document.getElementById("table");
+var email = document.getElementById("email");
+var tbody = document.getElementsByTagName("tbody")[0];
 var form_valid = 0;
+var list_books = [];
+
+
+class Books {
+    constructor(title,author,price,date,language,type){
+       this.Title =   title;
+       this.Author = author;
+       this.Price = price;
+       this.Date = date;
+       this.Language = language;
+       this.Type = type;
+
+
+    }
+    bookDetails(){
+      return "the name of the book is  "+this.title+
+      "the author of the book is"+this.author+ "book is a "+
+      this.type+"the price is"+this.price+"the date of publication"+
+      this.date+"the language of the book is"+this.language+
+      "the type of the book is a"+this.type;
+  }
+} 
+
 
 function valider(e){
     form_valid = 0;
     e.preventDefault();
-    for(i=0;i<input.length-3;i++){
+    for(i=0;i<5;i++){
         if(input[i].value==''){
            input[i].nextElementSibling.innerHTML = "please fill this field"
            input[i].nextElementSibling.style.color = "red"
@@ -50,7 +74,7 @@ function valider(e){
         else{
             input[2].nextElementSibling.innerHTML = "no"
             input[2].nextElementSibling.style.color = "red"
-        }
+        }   
     }
 
     // if(isNaN(Number(input[2].value))){
@@ -101,34 +125,42 @@ function valider(e){
     }
     
     if(form_valid == 0){
-        var tr = table.insertRow(-1);
-        tr.insertCell(0).innerHTML = input[0].value;
-        tr.insertCell(1).innerHTML = input[1].value;
-        tr.insertCell(2).innerHTML = input[2].value;
-        tr.insertCell(3).innerHTML = input[3].value;
-        tr.insertCell(4).innerHTML = select.value;
-        tr.insertCell(5).innerHTML = "<input type='button' class='delete_btn' onclick=' myDelete(this)' value='delete'><input type='button' class='edit_btn' onclick='edit_row(this)' value='Edit'>"
 
         var type2=false;
         for(var i=0;i<type.length;i++){
             if(type[i].checked){
-                tr.insertCell(5).innerHTML = type[i].value;
+                var temp = type[i].value;
                 break;
             }
         }
-        
-    }
-    input[0].value = "";
-    input[1].value = "";
-    input[2].value = "";
-    input[3].value = "";
-    select.value = "";
 
-    for(var i=0;i<type.length;i++){
-        if(type[i].checked==true){
-            type[i].checked = false
-            break;
-        } 
+        var book = new Books(input[0].value,input[1].value,input[2].value,input[3].value,select.value,email.value,temp);
+        list_books.push(book);
+
+        tbody.innerHTML = "";
+
+        for(var i=0;i<list_books.length;i++){
+            var tr = tbody.insertRow(-1);
+            tr.insertCell(0).innerHTML = list_books[i].Title;
+            tr.insertCell(1).innerHTML = list_books[i].Author;
+            tr.insertCell(2).innerHTML = list_books[i].Price;
+            tr.insertCell(3).innerHTML = list_books[i].Date;
+            tr.insertCell(4).innerHTML = list_books[i].Language;
+            tr.insertCell(5).innerHTML = "<input type='button' class='delete_btn' onclick=' myDelete(this)' value='delete'><input type='button' class='edit_btn' onclick='edit_row(this)' value='Edit'>"
+            tr.insertCell(5).innerHTML = list_books[i].temp;
+        }
+    }
+    // input[0].value = "";
+    // input[1].value = "";
+    // input[2].value = "";
+    // input[3].value = "";
+    // select.value = "";
+
+    // for(var i=0;i<type.length;i++){
+    //     if(type[i].checked==true){
+    //         type[i].checked = false
+    //         break;
+    //     } 
 }
 var reg_email = /^(((\w+)(.)(\w+))|((\w+)))(@)(\w+)(.)(\w+)$/;
 if(email.value!==""){
@@ -192,7 +224,7 @@ else{
 
 
 }
-}
+
 
 
 
