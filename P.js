@@ -7,14 +7,15 @@ var table = document.getElementById("table");
 var email = document.getElementById("email");
 var tbody = document.getElementsByTagName("tbody")[0];
 var form_valid = 0;
-var list_books = [];
+
 
 
 class Books {
-    constructor(title,author,price,date,language,type){
+    constructor(title,author,price,email,date,language,type){
        this.Title =   title;
        this.Author = author;
        this.Price = price;
+       this.Email = email;
        this.Date = date;
        this.Language = language;
        this.Type = type;
@@ -29,6 +30,27 @@ class Books {
       "the type of the book is a"+this.type;
   }
 } 
+
+var list_books = [];
+var list_temp = "";
+list_temp = JSON.parse(localStorage.getItem("list"));
+
+if(list_temp != null){
+    for(i=0;i<list_temp.length;i++){
+        var BookInfo = new Books(list_temp[i].Title,list_temp[i].Author,list_temp[i].Price,list_temp[i].Email,list_temp[i].Date,list_temp[i].Language,list_temp[i].Type);
+        list_books.push(BookInfo);
+    }
+}
+
+
+function sorting(){
+    list_books.sort(function(a,b){
+        if(a.Title<b.Title){
+            return -1;
+        }
+    })
+}
+
 
 
 function valider(e){
@@ -136,7 +158,9 @@ function valider(e){
 
         var book = new Books(input[0].value,input[1].value,input[2].value,input[3].value,select.value,email.value,temp);
         list_books.push(book);
+        sorting();
 
+        localStorage.setItem("list", JSON.stringify(list_books));
         tbody.innerHTML = "";
 
         for(var i=0;i<list_books.length;i++){
@@ -150,6 +174,7 @@ function valider(e){
             tr.insertCell(5).innerHTML = list_books[i].temp;
         }
     }
+
     // input[0].value = "";
     // input[1].value = "";
     // input[2].value = "";
