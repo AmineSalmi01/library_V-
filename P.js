@@ -37,7 +37,7 @@ list_temp = JSON.parse(localStorage.getItem("list"));
 
 if(list_temp != null){
     for(i=0;i<list_temp.length;i++){
-        var BookInfo = new Books(list_temp[i].Title,list_temp[i].Author,list_temp[i].Price,list_temp[i].Email,list_temp[i].Date,list_temp[i].Language,list_temp[i].Type);
+        var BookInfo = new Books(list_temp[i].Title,list_temp[i].Author,list_temp[i].Price,list_temp[i].Date,list_temp[i].Email,list_temp[i].Language,list_temp[i].Type);
         list_books.push(BookInfo);
     }
 }
@@ -228,10 +228,11 @@ function edit_row(editing){
      input[1].value = row.cells[1].innerHTML;
      input[2].value = row.cells[2].innerHTML;
      input[3].value = row.cells[3].innerHTML;
-     select.value = row.cells[4].innerHTML;
+     input[4].value = row.cells[4].innerHTML;
+     select.value = row.cells[5].innerHTML;
 
     for(var i=0;i<3;i++){
-     if(type[i].value==row.cells[5].innerHTML){
+     if(type[i].value==row.cells[6].innerHTML){
          type[i].checked = true;
          break;
         }
@@ -240,16 +241,16 @@ function edit_row(editing){
 }
 }
 else{
-    list_books[i].Title = input[0].value
-    list_books[i].Author = input[1].value
-    list_books[i].Price = input[2].value
-    list_books[i].Date = input[3].value
-    list_books[i].Email = email.value
-    list_books[i].Language = select.value   
+    list_books[i].Title = input[0].value;
+    list_books[i].Author = input[1].value;
+    list_books[i].Price = input[2].value;
+    list_books[i].Date = input[3].value;
+    list_books[i].Email = email.value;
+    list_books[i].Language = select.value;
 
     for(var i=0;i<3;i++){
         if(type[i].checked){
-            list_books[i].Type = type[i].value
+            list_books[i].Type = type[i].value;
             break;
         }
     }
