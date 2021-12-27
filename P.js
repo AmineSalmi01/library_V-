@@ -220,8 +220,8 @@ function myDelete(r){
 
 // edit button
 function edit_row(editing){
-    var i = editing.parentNode.parentNode.rowIndex;
-    var row = table.rows[i];
+    var i = editing.parentNode.parentNode.rowIndex - 1;
+    var row = tbody.rows[i];
 
     if(editing.value=="Edit"){
      input[0].value = row.cells[0].innerHTML;
@@ -254,6 +254,10 @@ else{
             break;
         }
     }
+    tbody.innerHTML = "";
+    sorting();
+    localStorage.setItem("list", JSON.stringify(list_books));
+    fill();
     editing.value = "Edit"
     document.getElementById('submit').removeAttribute("disabled");
 }
