@@ -6,6 +6,7 @@ var para = document.getElementById("para");
 var table = document.getElementById("table");
 var email = document.getElementById("email");
 var tbody = document.getElementsByTagName("tbody")[0];
+var prf = document.getElementById("prf");
 var form_valid = 0;
 
 
@@ -23,11 +24,10 @@ class Books {
 
     }
     bookDetails(){
-      return "the name of the book is  "+this.title+
-      "the author of the book is"+this.author+ "book is a "+
-      this.type+"the price is"+this.price+"the date of publication"+
-      this.date+"the language of the book is"+this.language+
-      "the type of the book is a"+this.type;
+      return "the name of the book is  "+this.Title+
+      "the author of the book is"+this.Author+ "book is a "+
+      this.Type+"the price is"+this.Price+"the date of publication"+
+      this.Date+"the language of the book is"+this.Language
   }
 } 
 
@@ -182,6 +182,7 @@ if(email.value!==""){
         }
 
         var book = new Books(input[0].value,input[1].value,input[2].value,input[3].value,email.value,select.value,temp);
+        prf.innerHTML = book.bookDetails();
         list_books.push(book);
         sorting();
 

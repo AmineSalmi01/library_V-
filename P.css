@@ -36,6 +36,14 @@ body{
     border: solid transparent;
     border-width: 2px;
 }
+#email{
+    width: 300px;
+    height: 30px;
+    opacity: 0.6;
+    border-radius: 10px;
+    border: solid transparent;
+    border-width: 2px;
+}
 #price{
     width: 300px;
     height: 30px;
@@ -104,6 +112,11 @@ table{
 }
 td{
     border: 1.8px solid white;
+}
+#prf{
+    color: white;
+    width: 100%;
+    text-align: center;
 }
 
 
