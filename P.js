@@ -7,6 +7,7 @@ var table = document.getElementById("table");
 var email = document.getElementById("email");
 var tbody = document.getElementsByTagName("tbody")[0];
 var prf = document.getElementById("prf");
+var print_div = document.getElementById("print_div");
 var form_valid = 0;
 
 
@@ -266,7 +267,13 @@ else{
 
 }
 
-
+function printDiv(){
+    div_temp = print_div.innerHTML;
+    body_temp = document.body.innerHTML;
+    document.body.innerHTML = div_temp;
+    window.print();
+    document.body.innerHTML = body_temp;
+}
 
 
 form.addEventListener("submit", valider);
