@@ -173,7 +173,6 @@ if(email.value!==""){
 }
     
     if(form_valid == 0){
-
         var type2=false;
         for(var i=0;i<type.length;i++){
             if(type[i].checked){
@@ -210,8 +209,12 @@ if(email.value!==""){
 // delete button
 function myDelete(r){
     if(confirm("sure?")){
-        var i = r.parentNode.parentNode.rowIndex;
-        table.deleteRow(i)
+        var i = r.parentNode.parentNode.rowIndex - 1;
+        list_books.splice(i, 1);
+        sorting();
+        localStorage.setItem("list", JSON.stringify(list_books));
+        tbody.innerHTML = "";
+        fill();
     }
 }
 
@@ -237,15 +240,16 @@ function edit_row(editing){
 }
 }
 else{
-    row.cells[0].innerHTML = input[0].value
-    row.cells[1].innerHTML = input[1].value
-    row.cells[2].innerHTML = input[2].value
-    row.cells[3].innerHTML = input[3].value
-    row.cells[4].innerHTML = select.value   
+    list_books[i].Title = input[0].value
+    list_books[i].Author = input[1].value
+    list_books[i].Price = input[2].value
+    list_books[i].Date = input[3].value
+    list_books[i].Email = email.value
+    list_books[i].Language = select.value   
 
     for(var i=0;i<3;i++){
         if(type[i].checked){
-            row.cells[5].innerHTML = type[i].value
+            list_books[i].Type = type[i].value
             break;
         }
     }
