@@ -169,9 +169,10 @@ function valider(e){
             tr.insertCell(1).innerHTML = list_books[i].Author;
             tr.insertCell(2).innerHTML = list_books[i].Price;
             tr.insertCell(3).innerHTML = list_books[i].Date;
-            tr.insertCell(4).innerHTML = list_books[i].Language;
-            tr.insertCell(5).innerHTML = "<input type='button' class='delete_btn' onclick=' myDelete(this)' value='delete'><input type='button' class='edit_btn' onclick='edit_row(this)' value='Edit'>"
-            tr.insertCell(5).innerHTML = list_books[i].temp;
+            tr.insertCell(5).innerHTML = list_books[i].Language;
+            tr.insertCell(4).innerHTML = list_books[i].Email;
+            tr.insertCell(6).innerHTML = "<input type='button' class='delete_btn' onclick=' myDelete(this)' value='delete'><input type='button' class='edit_btn' onclick='edit_row(this)' value='Edit'>"
+            tr.insertCell(6).innerHTML = list_books[i].temp;
         }
     }
 
