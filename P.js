@@ -11,7 +11,7 @@ var form_valid = 0;
 
 
 class Books {
-    constructor(title,author,price,email,date,language,type){
+    constructor(title,author,price,date,email,language,type){
        this.Title =   title;
        this.Author = author;
        this.Price = price;
@@ -42,6 +42,20 @@ if(list_temp != null){
     }
 }
 
+function fill(){
+    for(var i=0;i<list_books.length;i++){
+        var tr = tbody.insertRow(-1);
+        tr.insertCell(0).innerHTML = list_books[i].Title;
+        tr.insertCell(1).innerHTML = list_books[i].Author;
+        tr.insertCell(2).innerHTML = list_books[i].Price;
+        tr.insertCell(3).innerHTML = list_books[i].Date;
+        tr.insertCell(4).innerHTML = list_books[i].Email;
+        tr.insertCell(5).innerHTML = list_books[i].Language;
+        tr.insertCell(6).innerHTML = list_books[i].Type;
+        tr.insertCell(7).innerHTML = "<input type='button' class='delete_btn' onclick=' myDelete(this)' value='delete'><input type='button' class='edit_btn' onclick='edit_row(this)' value='Edit'>"
+    }
+}
+fill();
 
 function sorting(){
     list_books.sort(function(a,b){
@@ -145,6 +159,18 @@ function valider(e){
         para.style.color = "red";
         form_valid++;
     }
+    var reg_email = /^(((\w+)(.)(\w+))|((\w+)))(@)(\w+)(.)(\w+)$/;
+if(email.value!==""){
+    if(reg_email.test(email.value)){
+        email.nextElementSibling.innerHTML = "yes"
+        email.nextElementSibling.style.color = "green"
+    }
+    else{
+        email.nextElementSibling.innerHTML = "no"
+        email.nextElementSibling.style.color = "red"
+    }
+
+}
     
     if(form_valid == 0){
 
@@ -156,24 +182,14 @@ function valider(e){
             }
         }
 
-        var book = new Books(input[0].value,input[1].value,input[2].value,input[3].value,select.value,email.value,temp);
+        var book = new Books(input[0].value,input[1].value,input[2].value,input[3].value,email.value,select.value,temp);
         list_books.push(book);
         sorting();
 
         localStorage.setItem("list", JSON.stringify(list_books));
         tbody.innerHTML = "";
-
-        for(var i=0;i<list_books.length;i++){
-            var tr = tbody.insertRow(-1);
-            tr.insertCell(0).innerHTML = list_books[i].Title;
-            tr.insertCell(1).innerHTML = list_books[i].Author;
-            tr.insertCell(2).innerHTML = list_books[i].Price;
-            tr.insertCell(3).innerHTML = list_books[i].Date;
-            tr.insertCell(4).innerHTML = list_books[i].Language;
-            tr.insertCell(5).innerHTML = list_books[i].Email;
-            tr.insertCell(6).innerHTML = "<input type='button' class='delete_btn' onclick=' myDelete(this)' value='delete'><input type='button' class='edit_btn' onclick='edit_row(this)' value='Edit'>"
-            tr.insertCell(6).innerHTML = list_books[i].Type;
-        }
+        fill();
+        
     }
 
     // input[0].value = "";
@@ -188,18 +204,7 @@ function valider(e){
     //         break;
     //     } 
 }
-var reg_email = /^(((\w+)(.)(\w+))|((\w+)))(@)(\w+)(.)(\w+)$/;
-if(email.value!==""){
-    if(reg_email.test(email.value)){
-        email.nextElementSibling.innerHTML = "yes"
-        email.nextElementSibling.style.color = "green"
-    }
-    else{
-        email.nextElementSibling.innerHTML = "no"
-        email.nextElementSibling.style.color = "red"
-    }
 
-}
 
 
 // delete button
